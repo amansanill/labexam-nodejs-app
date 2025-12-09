@@ -1,14 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  app: nodejsapp
+  name: monitorapp
+  labels:
+    app: monitorapp
 spec:
   replicas: 1
   selector:
-    matchLabels: 
-      app: nodejsapp
-
-  template: 
+    matchLabels:
+      app: monitorapp
+  template:
     metadata:
       labels:
-        app: nodejsapp
+        app: monitorapp
+    spec:
+      containers:
+      - name: monitorapp
+        image: amansanill/nodejsapp
+        ports:
+        - containerPort: 3000
